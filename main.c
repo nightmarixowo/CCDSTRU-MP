@@ -2,14 +2,19 @@
 
 int main(){
 	int row, col;
+	char *warning = NULL;
 
-	clearScreen();
 	while(!over()){
+		clearScreen();
 		showBoard();
+		if(warning){
+			printf("\n  \033[1;33m%s\033[0m", warning);
+			warning = NULL;
+		}
 		printf("\n%s's turn. Enter row and col (1-3): ", go ? "\033[1;31mR\033[0m" : "\033[1;34mB\033[0m");
 
 		if(scanf("%d %d", &row, &col) != 2){
-			printf("Invalid input.\n");
+			warning = "Invalid input.";
 			while(getchar() != '\n');
 			continue;
 		}
@@ -17,19 +22,19 @@ int main(){
 		Pos pos = {row - 1, col - 1};
 
 		if(!inBounds(pos)){
-			printf("Out of bounds. Use 1-3.\n");
+			warning = "Out of bounds. Use 1-3.";
 			continue;
 		}
 
 		if(!start && !((go && R[pos.row][pos.col]) || (!go && B[pos.row][pos.col]))){
-			printf("You must select your own piece.\n");
+			warning = "You must select your own piece.";
 			continue;
 		}
 
 		NextPlayerMove(pos);
-		clearScreen();
 	}
 
+	clearScreen();
 	showBoard();
 
 	Result result = GameOver();
