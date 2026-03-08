@@ -26,6 +26,11 @@ int main(){
 			continue;
 		}
 
+		if(start && (R[pos.row][pos.col] || B[pos.row][pos.col])){
+			warning = "Position already occupied.";
+			continue;
+		}
+
 		if(!start && !((go && R[pos.row][pos.col]) || (!go && B[pos.row][pos.col]))){
 			warning = "You must select your own piece.";
 			continue;
