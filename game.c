@@ -162,23 +162,26 @@ Result GameOver(){
 }
 
 void showBoard(){
-	printf("\n    1   2   3\n");
-	printf("  +---+---+---+\n");
+	printf("\n     1   2   3\n");
+	printf("   ╔═══╦═══╦═══╗\n");
 	for(int i = 0; i < 3; i++){
-		printf("%d |", i + 1);
+		printf(" %d ║", i + 1);
 		for(int j = 0; j < 3; j++){
 			if(R[i][j] && S[i][j] && !T[i][j])
-				printf("\033[1;31mR\033[1;33m*\033[0m |");
+				printf("\033[1;31mR\033[1;33m*\033[0m ║");
 			else if(B[i][j] && S[i][j] && !T[i][j])
-				printf("\033[1;34mB\033[1;33m*\033[0m |");
+				printf("\033[1;34mB\033[1;33m*\033[0m ║");
 			else if(R[i][j])
-				printf(" \033[1;31mR\033[0m |");
+				printf(" \033[1;31mR\033[0m ║");
 			else if(B[i][j])
-				printf(" \033[1;34mB\033[0m |");
+				printf(" \033[1;34mB\033[0m ║");
 			else
-				printf("   |");
+				printf("   ║");
 		}
-		printf("\n  +---+---+---+\n");
+		if(i < 2)
+			printf("\n   ╠═══╬═══╬═══╣\n");
+		else
+			printf("\n   ╚═══╩═══╩═══╝\n");
 	}
-	printf("\n  Turn: %s | Move: %d\n", go ? "\033[1;31mR\033[0m" : "\033[1;34mB\033[0m", val);
+	printf("\n   Turn: %s  │  Move: %d\n", go ? "\033[1;31mR\033[0m" : "\033[1;34mB\033[0m", val);
 }
