@@ -135,12 +135,12 @@ void NextPlayerMove(Pos pos){
 		good = true;
 	}
 
-	if(!over() && !start && (go && R[pos.row][pos.col] || !go && B[pos.row][pos.col])){
+	if(!over() && !start && ((go && R[pos.row][pos.col]) || (!go && B[pos.row][pos.col]))){
 		Update(pos);
 		good = true;
 	}
 
-	if(!start && cardinality(R) == 1 && cardinality(B) == 1){
+	if(start && cardinality(R) == 1 && cardinality(B) == 1){
 		start = false;
 	}
 

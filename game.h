@@ -28,6 +28,8 @@ void Remove(Pos pos);
 void Replace(Pos pos);
 void Expand(Pos pos);
 bool over();
+void NextPlayerMove(Pos pos);
+Result GameOver();
 void showBoard();
 
 #endif
