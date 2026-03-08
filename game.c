@@ -162,6 +162,7 @@ Result GameOver(){
 }
 
 void showBoard(){
+	clearScreen();
 	printf("\n    1   2   3\n");
 	printf("  +---+---+---+\n");
 	for(int i = 0; i < 3; i++){
