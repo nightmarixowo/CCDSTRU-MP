@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef bool Board[3][3];
+typedef struct{
+	int row, col;
+} Pos;
 
 typedef enum {
 	R_WIN,
@@ -13,24 +15,27 @@ typedef enum {
 } Result;
 
 typedef struct{
-	int row,col;
-} Pos;
+	bool good, go, start, found;
+	int val;
+	bool R[3][3], B[3][3], S[3][3], T[3][3];
+} Game;
 
-// System Variables
-extern bool good, go, start, found;
-extern int val;
-extern Board R, B, S, T;
-
-// Functions
-int cardinality(Board b);
+// Helper Functions
+int cardinality(bool b[3][3]);
 bool inBounds(Pos pos);
-void Remove(Pos pos);
-void Replace(Pos pos);
-void Expand(Pos pos);
-bool over();
-void NextPlayerMove(Pos pos);
-Result GameOver();
+bool over(Game *g);
+
+// Game Logic
+void initGame(Game *g);
+void Remove(Game *g, Pos pos);
+void Replace(Game *g, Pos pos);
+void Expand(Game *g, Pos pos);
+void Update(Game *g, Pos pos);
+void NextPlayerMove(Game *g, Pos pos);
+Result GameOver(Game *g);
+
+// Display
 void clearScreen();
-void showBoard();
+void showBoard(Game *g);
 
 #endif
