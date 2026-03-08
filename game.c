@@ -41,6 +41,8 @@ void initGame(Game *g){
 	g->start = true;
 	g->found = false;
 	g->val = 0;
+
+	// Initialize False for Everything!
 	memset(g->R, false, sizeof(g->R));
 	memset(g->B, false, sizeof(g->B));
 	memset(g->S, false, sizeof(g->S));
