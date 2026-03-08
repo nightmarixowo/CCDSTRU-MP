@@ -30,6 +30,7 @@ void Expand(Pos pos);
 bool over();
 void NextPlayerMove(Pos pos);
 Result GameOver();
+void clearScreen();
 void showBoard();
 
 #endif
