@@ -10,5 +10,8 @@ main.o: main.c game.h
 game.o: game.c game.h
 	$(CC) $(CFLAGS) -c game.c
 
+clang: CC = clang
+clang: clean chain
+
 clean:
 	rm -f *.o chain
