@@ -247,10 +247,10 @@ int main()
 			const char *msg = "DRAW!";
 			Color col = WHITE;
 
-			if(r==R_WIN){ msg="R WINS!"; col=RED; }
-			if(r==B_WIN){ msg="B WINS!"; col=BLUE; }
+			if(r==R_WIN){ msg="RED WINS!"; col=RED; }
+			if(r==B_WIN){ msg="BLUE WINS!"; col=BLUE; }
 
-			DrawText(msg, SIZE/2-50, SIZE/2-10, 30, col);
+			DrawText(msg, SIZE/2-65, SIZE/2-10, 30, col);
 		}
 
 		EndDrawing();
