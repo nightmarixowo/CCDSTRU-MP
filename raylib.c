@@ -149,17 +149,16 @@ void Update(Game *g, Pos pos){
 }
 
 void NextPlayerMove(Game *g, Pos pos){
-	if(!over(g) && g->start && g->go){
-		g->R[pos.row][pos.col] = true;
-		g->S[pos.row][pos.col] = true;
-		g->good = true;
-	}
+	if(!over(g) && g->start && !g->R[pos.row][pos.col] && !g->B[pos.row][pos.col]){
 
-	if(!over(g) && g->start && !g->go){
-		g->B[pos.row][pos.col] = true;
-		g->S[pos.row][pos.col] = true;
-		g->good = true;
-	}
+        if(g->go)
+            g->R[pos.row][pos.col] = true;
+        else
+            g->B[pos.row][pos.col] = true;
+
+        g->S[pos.row][pos.col] = true;
+        g->good = true;
+    }
 
 	if(!over(g) && !g->start && ((g->go && g->R[pos.row][pos.col]) || (!g->go && g->B[pos.row][pos.col]))){
 		Update(g, pos);
