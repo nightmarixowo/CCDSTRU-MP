@@ -201,9 +201,9 @@ void drawBoard(Game *g){
 			DrawRectangleLines(x,y,cell,cell,WHITE);
 
 			if(g->R[i][j] && g->S[i][j] && !g->T[i][j])
-				DrawText("RR",x+30,y+30,30,RED);
+				DrawText("R*",x+30,y+30,30,RED);
 			else if(g->B[i][j] && g->S[i][j] && !g->T[i][j])
-				DrawText("BB",x+30,y+30,30,BLUE);
+				DrawText("B*",x+30,y+30,30,BLUE);
 			else if(g->R[i][j])
 				DrawText("R",x+35,y+30,30,RED);
 			else if(g->B[i][j])
